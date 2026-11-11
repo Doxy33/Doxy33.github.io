@@ -1,0 +1,678 @@
+/* =========================================================
+   custom.css – „Elegant Gold“ tema BootstrapMade „Personal“ šablonui
+   Prijunkite VISUOSE puslapiuose <head> dalyje PO main.css:
+   <link href="assets/css/custom.css" rel="stylesheet">
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --default-font: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --heading-font: 'Cormorant Garamond', Georgia, serif;
+  --nav-font: 'Jost', Arial, sans-serif;
+
+  --accent-color: #c9a96e;          /* šampano auksas */
+  --nav-hover-color: #c9a96e;
+  --background-color: #0b0b0d;
+  --surface-color: #141417;
+  --default-color: #cfcac2;
+  --heading-color: #f4efe6;
+
+  --gold-light: #e8d5a8;
+  --gold-dark: #9c7c45;
+  --gold-gradient: linear-gradient(135deg, #e8d5a8 0%, #c9a96e 45%, #9c7c45 100%);
+  --line: rgba(201, 169, 110, 0.25);
+  --radius: 18px;
+  --shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 10px 30px -10px rgba(201, 169, 110, 0.45);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 6. Kontrastas: mobilus meniu tamsus (šablone jis baltas, o auksas ant baltos blogai matosi) */
+  --nav-mobile-background-color: #141417;
+  --nav-dropdown-background-color: #141417;
+  --nav-dropdown-color: #cfcac2;
+  --nav-dropdown-hover-color: #c9a96e;
+  --contrast-color: #0b0b0d;
+}
+
+/* Tamsūs fonai ir subtilus švytėjimas */
+body {
+  font-family: var(--default-font);
+  font-weight: 300;
+  background:
+    radial-gradient(ellipse at top, rgba(201, 169, 110, 0.06), transparent 60%),
+    var(--background-color);
+  color: var(--default-color);
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  background: var(--accent-color);
+  color: #0b0b0d;
+}
+
+/* =========================================================
+   2. TIPOGRAFIJA
+   ========================================================= */
+
+/* 2b. Antraštės h1–h6 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+h1 { font-size: 3.4rem; font-weight: 700; }
+h2 { font-size: 2.6rem; }
+h3 { font-size: 2rem; font-style: italic; color: var(--accent-color); }
+h4 { font-size: 1.55rem; }
+h5 {
+  font-family: var(--default-font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-color);
+}
+h6 {
+  font-family: var(--default-font);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+/* Logotipas */
+.header .logo h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 1px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero */
+.hero h2 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p {
+  font-family: var(--heading-font);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--heading-color);
+}
+.hero p span {
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+
+/* Puslapio pavadinimas */
+.page-title {
+  border-bottom: 1px solid var(--line);
+}
+.page-title h1 {
+  font-size: 3rem;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+/* Sekcijų pavadinimai: maža antraštė + ornamentas */
+.section-title h2 {
+  font-family: var(--default-font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--accent-color);
+  padding-bottom: 18px;
+}
+.section-title h2::after {
+  width: 80px;
+  height: 1px;
+  background: var(--gold-gradient);
+}
+.section-title p {
+  font-family: var(--heading-font);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* 2c. Pastraipos */
+p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+  margin-bottom: 1.3rem;
+}
+p em, p i:not(.bi) {
+  font-family: var(--heading-font);
+  font-size: 1.2em;
+  color: var(--gold-light);
+}
+.about .content > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--heading-font);
+  font-size: 4rem;
+  line-height: 0.85;
+  padding: 6px 10px 0 0;
+  color: var(--accent-color);
+}
+
+/* =========================================================
+   3. KOMPONENTAI
+   ========================================================= */
+
+/* 3a. Mygtukai: kontūriniai su auksiniu užpildymu */
+.btn,
+.php-email-form button[type="submit"] {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: var(--default-font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-color);
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  border-radius: 0;
+  padding: 14px 38px;
+  transition: color 0.45s var(--ease), box-shadow 0.45s var(--ease), transform 0.2s;
+}
+.btn::before,
+.php-email-form button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gold-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+.btn:hover,
+.php-email-form button[type="submit"]:hover {
+  color: #0b0b0d;
+  box-shadow: var(--shadow-gold);
+}
+.btn:hover::before,
+.php-email-form button[type="submit"]:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.btn:active,
+.php-email-form button[type="submit"]:active {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
+/* Portfolio filtrai */
+.portfolio .portfolio-filters li {
+  font-family: var(--default-font);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--default-color);
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  transition: all 0.3s var(--ease);
+}
+.portfolio .portfolio-filters li:hover {
+  color: var(--accent-color);
+  border-color: var(--line);
+}
+.portfolio .portfolio-filters li:active,
+.portfolio .portfolio-filters li.filter-active {
+  color: #0b0b0d;
+  background: var(--gold-gradient);
+  border-color: transparent;
+}
+
+/* 3b. Nuorodos: auksinė linija išsiplečia iš centro */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+a:hover {
+  color: var(--gold-light);
+}
+a:active {
+  color: var(--gold-dark);
+}
+main p a,
+main li a:not(.btn) {
+  background-image: linear-gradient(var(--accent-color), var(--accent-color));
+  background-size: 0% 1px;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease), color 0.3s;
+}
+main p a:hover,
+main li a:not(.btn):hover {
+  background-size: 100% 1px;
+}
+
+/* Breadcrumbs */
+.page-title .breadcrumbs ol li,
+.page-title .breadcrumbs ol li a {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.page-title .breadcrumbs ol li a {
+  color: var(--accent-color);
+}
+.page-title .breadcrumbs ol li + li::before {
+  content: "◆";
+  font-size: 0.55rem;
+  color: var(--accent-color);
+  padding: 0 12px;
+}
+
+/* Socialinės ikonos */
+.hero .social-links a,
+.footer .social-links a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent-color);
+  margin: 0 6px;
+  transition: all 0.35s var(--ease);
+}
+.hero .social-links a:hover,
+.footer .social-links a:hover {
+  background: var(--gold-gradient);
+  color: #0b0b0d;
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* =========================================================
+   4. IŠDĖSTYMAS
+   ========================================================= */
+
+/* 4a. Margin / Padding */
+.about.section,
+.resume.section,
+.portfolio.section {
+  padding: 110px 0 90px;
+}
+.about .content {
+  padding: 20px 0 0 50px;
+}
+.about .content ul {
+  margin: 28px 0 32px;
+}
+.about .content ul li {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.about .content ul i {
+  color: var(--accent-color);
+}
+.resume .resume-title {
+  font-style: italic;
+  margin: 40px 0 30px;
+}
+.resume .resume-item {
+  margin-bottom: 34px;
+  padding: 30px 36px;
+}
+.portfolio .portfolio-filters {
+  margin-bottom: 50px;
+}
+.portfolio .isotope-container > div {
+  margin-bottom: 16px;
+}
+@media (max-width: 991px) {
+  .about .content { padding: 30px 0 0; }
+}
+
+/* 4b. Turinio blokai: stiklo kortelės */
+.about img.img-fluid {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), 0 0 0 1px var(--line), 18px 18px 0 -1px rgba(201, 169, 110, 0.18);
+  filter: grayscale(25%) contrast(1.05);
+  transition: filter 0.6s var(--ease);
+}
+.about img.img-fluid:hover {
+  filter: none;
+}
+
+.resume .resume-item {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.resume .resume-item:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow), var(--shadow-gold);
+}
+.resume .resume-item::before {
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 12px rgba(201, 169, 110, 0.6);
+}
+.resume .resume-item h4 {
+  font-size: 1.6rem;
+}
+.resume .resume-item h5 {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 5px 16px;
+}
+
+.portfolio .portfolio-content {
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.portfolio .portfolio-content img {
+  transition: transform 0.8s var(--ease);
+}
+.portfolio .portfolio-content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow), var(--shadow-gold);
+}
+.portfolio .portfolio-content:hover img {
+  transform: scale(1.06);
+}
+.portfolio .portfolio-content .portfolio-info {
+  background: linear-gradient(to top, rgba(11, 11, 13, 0.95), rgba(11, 11, 13, 0.4));
+  border-top: 1px solid var(--accent-color);
+}
+.portfolio .portfolio-content .portfolio-info h4 {
+  font-family: var(--default-font);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #0b0b0d;
+  background: var(--gold-gradient);
+}
+
+/* =========================================================
+   5. PASIRINKTI KOMPONENTAI
+   ========================================================= */
+
+/* 5.1 Navigacijos juosta */
+.header {
+  background: rgba(11, 11, 13, 0.75);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+@media (min-width: 1200px) {
+  .navmenu a,
+  .navmenu a:focus {
+    font-size: 0.78rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--default-color);
+    position: relative;
+    padding: 10px 18px;
+  }
+  .navmenu a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.35s var(--ease);
+  }
+  .navmenu li:hover > a,
+  .navmenu .active {
+    color: var(--accent-color);
+  }
+  .navmenu li:hover > a::after,
+  .navmenu .active::after {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* 5.2 Progreso juostos */
+.skills .progress {
+  height: auto;
+  background: none;
+}
+.skills .progress .skill {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.skills .progress .skill .val {
+  font-family: var(--heading-font);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--accent-color);
+}
+.skills .progress-bar-wrap {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: visible;
+}
+.skills .progress-bar {
+  position: relative;
+  height: 3px;
+  background: var(--gold-gradient);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(201, 169, 110, 0.5);
+  overflow: visible;
+}
+.skills .progress-bar::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px var(--accent-color);
+}
+
+/* 5.3 „Į viršų“ mygtukas */
+.scroll-top {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(11, 11, 13, 0.8);
+  border: 1px solid var(--accent-color);
+  backdrop-filter: blur(6px);
+  transition: all 0.4s var(--ease);
+}
+.scroll-top i {
+  font-size: 28px;
+  color: var(--accent-color);
+  transition: color 0.3s;
+}
+.scroll-top:hover {
+  background: var(--gold-gradient);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold);
+}
+.scroll-top:hover i {
+  color: #0b0b0d;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--line);
+}
+.footer .sitename {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* Preloader auksinis */
+#preloader:before {
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+}
+
+/* =========================================================
+   HERO: nuotrauka dešinėje, patamsinta, tekstas kairėje
+   ========================================================= */
+.hero {
+  background: var(--background-color);
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Nuotrauka: mažesnė, dešinėje, patamsinta, kraštas susilieja su fonu */
+.hero img {
+  left: auto !important;
+  right: 0;
+  width: 58% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.6) contrast(1.1) saturate(0.75);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+}
+
+/* Papildomas tamsus sluoksnis (kairė tamsi -> dešinė šviesesnė) */
+.hero::before {
+  background:
+    linear-gradient(90deg, rgba(11, 11, 13, 1) 0%, rgba(11, 11, 13, 0.85) 35%, rgba(11, 11, 13, 0.25) 70%, rgba(11, 11, 13, 0.45) 100%),
+    linear-gradient(to top, rgba(11, 11, 13, 0.9) 0%, transparent 35%) !important;
+}
+
+/* Tekstas: aiškiai matomas ant tamsaus fono */
+.hero .container {
+  position: relative;
+  z-index: 3;
+  max-width: 1140px;
+}
+.hero h2 {
+  max-width: 600px;
+  line-height: 1.05;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.8));
+}
+.hero h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 1px;
+  margin-top: 22px;
+  background: var(--gold-gradient);
+}
+.hero p {
+  color: var(--heading-color);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+  margin-top: 18px;
+}
+.hero .social-links {
+  margin-top: 30px;
+}
+.hero .social-links a {
+  background: rgba(11, 11, 13, 0.6);
+}
+
+/* =========================================================
+   6. KONTRASTAS IR SKAITOMUMAS
+   ========================================================= */
+
+/* Mobilaus meniu nuorodos ir mygtukas */
+.mobile-nav-toggle {
+  color: var(--accent-color);
+}
+@media (max-width: 1199px) {
+  .navmenu ul {
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--default-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  .navmenu a:hover,
+  .navmenu .active {
+    color: var(--accent-color);
+  }
+}
+
+/* Formos laukai – šviesus tekstas ant tamsaus fono */
+.php-email-form input,
+.php-email-form textarea {
+  background: var(--surface-color);
+  color: var(--heading-color);
+  border: 1px solid var(--line);
+}
+.php-email-form input::placeholder,
+.php-email-form textarea::placeholder {
+  color: #8f8a82;
+}
+.php-email-form input:focus,
+.php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+/* Matomas fokusas naršant klaviatūra */
+a:focus-visible,
+.btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Smulkus tekstas neturi būti per blankus */
+.copyright,
+.credits,
+.resume .resume-item ul li,
+.about .content ul li {
+  color: var(--default-color);
+}
+
+/* Telefonuose: nuotrauka per visą plotį, bet stipriau patamsinta */
+@media (max-width: 991px) {
+  .hero img {
+    width: 100% !important;
+    filter: brightness(0.4) saturate(0.7);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero::before {
+    background: linear-gradient(to top, rgba(11, 11, 13, 0.95) 10%, rgba(11, 11, 13, 0.5) 100%) !important;
+  }
+}
