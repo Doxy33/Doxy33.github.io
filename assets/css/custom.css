@@ -851,7 +851,8 @@ button:focus-visible {
   background: linear-gradient(180deg, #f6e6bd 0%, #c9a96e 50%, #8a6a35 100%);
   box-shadow: 0 0 14px rgba(232, 213, 168, 0.7);
   overflow: hidden;
-  animation: fill-in 1.6s var(--ease) both;
+  animation: fill-in 1.6s var(--ease);
+  transition: width 0.7s var(--ease);
 }
 /* Blizgesys, bėgantis per juostą */
 .xp-bar-fill::after {
@@ -911,7 +912,7 @@ button:focus-visible {
   left: 12.5%;
   right: 12.5%;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-color) 66%, #3a362f 66%);
+  background: linear-gradient(90deg, var(--accent-color) var(--path, 66%), #3a362f var(--path, 66%));
 }
 .rank-step {
   display: flex;
@@ -1708,4 +1709,63 @@ button:focus-visible {
 }
 @media (max-width: 767px) {
   .form-buttons { flex-direction: column-reverse; }
+}
+
+/* =========================================================
+   11. DINAMINIS ĮGŪDŽIŲ MODULIS (12 LD)
+   ========================================================= */
+.kanban-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.kanban-empty {
+  margin: 0;
+  padding: 22px 10px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6f6a63;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+}
+
+/* Būsenos pasirinkimas kortelėje */
+.skill-select {
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: var(--default-font);
+  padding: 4px 26px 4px 10px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c9a96e'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  transition: box-shadow 0.3s;
+}
+.skill-select.status-done {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230b0b0d'/%3E%3C/svg%3E"), var(--gold-gradient);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 9px center, center;
+  background-size: auto, cover;
+}
+.skill-select:focus-visible,
+.skill-select:hover {
+  box-shadow: 0 0 0 2px rgba(201, 169, 110, 0.35);
+}
+.skill-select option {
+  background: var(--surface-color);
+  color: var(--heading-color);
+  text-transform: none;
+}
+
+/* Perkelta kortelė trumpai sušvyti */
+.skill-card.just-moved {
+  animation: card-pop 0.6s var(--ease);
+}
+@keyframes card-pop {
+  0%   { transform: scale(0.85); opacity: 0; box-shadow: 0 0 0 rgba(201, 169, 110, 0); }
+  60%  { transform: scale(1.04); opacity: 1; box-shadow: 0 0 25px rgba(201, 169, 110, 0.6); }
+  100% { transform: scale(1); }
 }

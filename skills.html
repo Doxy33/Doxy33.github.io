@@ -82,13 +82,12 @@
 
       <div class="container">
 
-        <!-- 3–4. Žaidėjo kortelė: XP, lygis, rangas, progreso juosta -->
         <div class="player-card" data-aos="zoom-in" data-aos-delay="100">
 
           <div class="level-badge">
             <div class="level-hex">
               <span class="level-word">LVL</span>
-              <span class="level-num">3</span>
+              <span class="level-num" id="levelNum">1</span>
             </div>
           </div>
 
@@ -96,180 +95,83 @@
             <div class="player-top">
               <div>
                 <span class="player-label">Rangas</span>
-                <h3 class="player-rank">Specialistas</h3>
+                <h3 class="player-rank" id="rankName">Pradedantysis</h3>
               </div>
               <div class="player-xp">
                 <span class="player-label">Patirties taškai</span>
-                <span class="xp-total">215 <small>XP</small></span>
+                <span class="xp-total"><span id="xpTotal">0</span> <small>XP</small></span>
               </div>
             </div>
 
-            <!-- 4. Progreso juosta -->
-            <div class="xp-bar" role="progressbar" aria-label="Progresas iki 4 lygio"
-                 aria-valuemin="150" aria-valuemax="300" aria-valuenow="215">
-              <div class="xp-bar-fill" style="width: 43%;"></div>
-              <span class="xp-bar-text">215 / 300 XP</span>
+            <div class="xp-bar" id="xpBar" role="progressbar" aria-label="Progresas iki kito lygio"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="xp-bar-fill" id="xpBarFill" style="width: 0%;"></div>
+              <span class="xp-bar-text" id="xpBarText">0 / 50 XP</span>
             </div>
             <div class="xp-bar-foot">
-              <span><i class="bi bi-arrow-up-circle"></i> Iki <strong>4 lygio</strong> liko 85 XP</span>
-              <span>Kitas rangas: <strong>Profesionalas</strong></span>
+              <span id="xpLeft"></span>
+              <span id="nextRank"></span>
             </div>
 
-            <!-- Rangų kelias -->
-            <ol class="rank-path">
-              <li class="rank-step reached"><span class="rank-dot">1</span><span class="rank-name">Pradedantysis</span><span class="rank-range">0–49 XP</span></li>
-              <li class="rank-step reached"><span class="rank-dot">2</span><span class="rank-name">Praktikantas</span><span class="rank-range">50–149 XP</span></li>
-              <li class="rank-step current"><span class="rank-dot">3</span><span class="rank-name">Specialistas</span><span class="rank-range">150–299 XP</span></li>
-              <li class="rank-step locked"><span class="rank-dot"><i class="bi bi-lock-fill"></i></span><span class="rank-name">Profesionalas</span><span class="rank-range">≥300 XP</span></li>
-            </ol>
+            <ol class="rank-path" id="rankPath"></ol>
           </div>
 
         </div>
 
-        <!-- 5. Statistika -->
         <div class="skill-stats" data-aos="fade-up" data-aos-delay="150">
           <div class="stat-box">
             <div class="stat-icon"><i class="bi bi-controller"></i></div>
             <div>
-              <span class="stat-value">8</span>
+              <span class="stat-value" id="statTotal">0</span>
               <span class="stat-label">Iš viso įgūdžių</span>
             </div>
           </div>
           <div class="stat-box">
             <div class="stat-icon"><i class="bi bi-trophy-fill"></i></div>
             <div>
-              <span class="stat-value">4</span>
+              <span class="stat-value" id="statDone">0</span>
               <span class="stat-label">Atlikta įgūdžių</span>
             </div>
           </div>
           <div class="stat-box">
-            <div class="stat-icon stat-ring" style="--p: 50;"><span>50%</span></div>
+            <div class="stat-icon stat-ring" id="statRing" style="--p: 0;"><span id="statRingText">0%</span></div>
             <div>
-              <span class="stat-value">50%</span>
+              <span class="stat-value" id="statPercent">0%</span>
               <span class="stat-label">Atliktų įgūdžių dalis</span>
             </div>
           </div>
         </div>
 
-        <!-- 2. Skill Kanban – užduočių lenta -->
         <div class="kanban" data-aos="fade-up" data-aos-delay="200">
 
-          <!-- Planuojama -->
           <div class="kanban-column kanban-planned">
             <div class="kanban-head">
               <i class="bi bi-lock-fill"></i>
               <h4>Planuojama</h4>
-              <span class="kanban-count">2</span>
+              <span class="kanban-count" id="countPlanned">0</span>
             </div>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-filetype-jsx"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">React</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-planned">Planuojama</span>
-                  <span class="skill-xp">+30 XP</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-database"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">SQL duomenų bazės</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-planned">Planuojama</span>
-                  <span class="skill-xp">+20 XP</span>
-                </div>
-              </div>
-            </article>
+            <div class="kanban-list" id="listPlanned"></div>
           </div>
 
-          <!-- Mokomasi -->
           <div class="kanban-column kanban-learning">
             <div class="kanban-head">
               <i class="bi bi-lightning-charge-fill"></i>
               <h4>Mokomasi</h4>
-              <span class="kanban-count">2</span>
+              <span class="kanban-count" id="countLearning">0</span>
             </div>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-filetype-js"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">JavaScript</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-learning">Mokomasi</span>
-                  <span class="skill-xp">+80 XP</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-bootstrap"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">Bootstrap 5</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-learning">Mokomasi</span>
-                  <span class="skill-xp">+45 XP</span>
-                </div>
-              </div>
-            </article>
+            <div class="kanban-list" id="listLearning"></div>
           </div>
 
-          <!-- Atlikta -->
           <div class="kanban-column kanban-done">
             <div class="kanban-head">
               <i class="bi bi-trophy-fill"></i>
               <h4>Atlikta</h4>
-              <span class="kanban-count">4</span>
+              <span class="kanban-count" id="countDone">0</span>
             </div>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-filetype-html"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">HTML5</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-done"><i class="bi bi-check-lg"></i> Atlikta</span>
-                  <span class="skill-xp">60 XP</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-filetype-css"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">CSS3</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-done"><i class="bi bi-check-lg"></i> Atlikta</span>
-                  <span class="skill-xp">70 XP</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-git"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">Git ir GitHub</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-done"><i class="bi bi-check-lg"></i> Atlikta</span>
-                  <span class="skill-xp">50 XP</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="skill-card">
-              <div class="skill-icon"><i class="bi bi-phone"></i></div>
-              <div class="skill-body">
-                <h4 class="skill-name">Responsive dizainas</h4>
-                <div class="skill-meta">
-                  <span class="skill-status status-done"><i class="bi bi-check-lg"></i> Atlikta</span>
-                  <span class="skill-xp">35 XP</span>
-                </div>
-              </div>
-            </article>
+            <div class="kanban-list" id="listDone"></div>
           </div>
 
-        </div><!-- End Kanban -->
+        </div>
 
       </div>
 
@@ -319,6 +221,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
