@@ -142,35 +142,91 @@
 
         </div>
 
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-          <div class="row gy-4">
+        <!-- Kontaktų forma (11 LD) -->
+        <form id="contactForm" class="contact-form" data-aos="fade-up" data-aos-delay="600" novalidate>
 
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="vardas">Vardas <span class="req">*</span></label>
+              <input type="text" id="vardas" name="vardas" placeholder="Jūsų vardas" required>
+              <small class="field-error" id="vardas-error" aria-live="polite"></small>
             </div>
 
-            <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+            <div class="form-field">
+              <label for="pavarde">Pavardė <span class="req">*</span></label>
+              <input type="text" id="pavarde" name="pavarde" placeholder="Jūsų pavardė" required>
+              <small class="field-error" id="pavarde-error" aria-live="polite"></small>
             </div>
 
-            <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+            <div class="form-field">
+              <label for="email">El. paštas <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="vardas@pastas.lt" required>
+              <small class="field-error" id="email-error" aria-live="polite"></small>
             </div>
 
-            <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+            <div class="form-field">
+              <label for="telefonas">Telefono numeris <span class="req">*</span></label>
+              <input type="tel" id="telefonas" name="telefonas" placeholder="+370 6xx xxxxx" inputmode="numeric" required>
+              <small class="field-error" id="telefonas-error" aria-live="polite"></small>
             </div>
 
-            <div class="col-md-12 text-center">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              <button type="submit">Send Message</button>
+            <div class="form-field form-field-wide">
+              <label for="adresas">Adresas <span class="req">*</span></label>
+              <input type="text" id="adresas" name="adresas" placeholder="Gatvė, namo nr., miestas" required>
+              <small class="field-error" id="adresas-error" aria-live="polite"></small>
             </div>
-
           </div>
-        </form><!-- End Contact Form -->
+
+          <!-- 3 vertinimo klausimai (1–10) -->
+          <fieldset class="rating-group">
+            <legend>Įvertinkite nuo 1 iki 10</legend>
+
+            <div class="rating">
+              <label for="q1">Kaip vertinate svetainės dizainą?</label>
+              <div class="rating-row">
+                <span class="rating-min">1</span>
+                <input type="range" id="q1" name="q1" min="1" max="10" value="5">
+                <span class="rating-max">10</span>
+                <output class="rating-value" for="q1">5</output>
+              </div>
+                <small class="field-error" id="q1-error" aria-live="polite"></small>
+            </div>
+
+            <div class="rating">
+              <label for="q2">Kaip vertinate svetainės turinį?</label>
+              <div class="rating-row">
+                <span class="rating-min">1</span>
+                <input type="range" id="q2" name="q2" min="1" max="10" value="5">
+                <span class="rating-max">10</span>
+                <output class="rating-value" for="q2">5</output>
+              </div>
+                <small class="field-error" id="q2-error" aria-live="polite"></small>
+            </div>
+
+            <div class="rating">
+              <label for="q3">Ar rekomenduotumėte mane kitiems?</label>
+              <div class="rating-row">
+                <span class="rating-min">1</span>
+                <input type="range" id="q3" name="q3" min="1" max="10" value="5">
+                <span class="rating-max">10</span>
+                <output class="rating-value" for="q3">5</output>
+              </div>
+                <small class="field-error" id="q3-error" aria-live="polite"></small>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <p class="form-hint" id="formHint">Užpildykite visus privalomus laukus (*), kad galėtumėte siųsti.</p>
+            <div class="form-buttons">
+              <button type="button" id="clearBtn" class="btn btn-clear">Išvalyti</button>
+              <button type="submit" id="submitBtn" class="btn" disabled>Siųsti</button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Čia JavaScript įrašo pateiktus duomenis -->
+        <div id="formResults" class="form-results" hidden></div>
 
       </div>
 
@@ -224,6 +280,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Mano JavaScript (11 LD) -->
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
